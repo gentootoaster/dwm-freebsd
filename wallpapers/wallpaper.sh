@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Directory containing the wallpapers
 WALLPAPER_DIR="$HOME/wallpapers"
@@ -7,7 +7,7 @@ WALLPAPER_DIR="$HOME/wallpapers"
 set_wallpaper() {
     local wallpaper_dir="$1"
 
-    wallpaper_path=$(find "$wallpaper_dir" -type f | shuf -n 1)
+    wallpaper_path=$(find "$wallpaper_dir" -type f | gshuf -n 1)
 
     if [ -z "$wallpaper_path" ]; then
         echo "No wallpapers found in $wallpaper_dir."
@@ -21,7 +21,7 @@ set_wallpaper() {
 set_wallpaper_by_time() {
     local wallpaper_dir="$1"
     local current_hour=$(date +%H)
-
+ 
     if [ "$current_hour" -ge 6 ] && [ "$current_hour" -lt 12 ]; then
         set_wallpaper "$wallpaper_dir/tropic_island_morning.jpg"
     elif [ "$current_hour" -ge 12 ] && [ "$current_hour" -lt 18 ]; then
